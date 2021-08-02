@@ -1,0 +1,10 @@
+.review-card {
+  width: calc(50% - 1rem);
+  @apply bg-white p-4 mb-4 mr-4;
+}
+
+@media (max-width: 639px) {
+  .review-card {
+    @apply w-full;
+  }
+}

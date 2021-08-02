@@ -1,0 +1,7 @@
+.chunk {
+  @apply text-xs h-full;
+  flex: 2;
+}
+.filled {
+  @apply bg-teal-500;
+}

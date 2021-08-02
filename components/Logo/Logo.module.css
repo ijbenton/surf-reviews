@@ -1,0 +1,7 @@
+.logo {
+  @apply block h-8 w-auto fill-current text-white;
+}
+
+:global(.dark) .logo {
+  @apply text-black;
+}

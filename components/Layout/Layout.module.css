@@ -1,0 +1,12 @@
+.layout {
+  @apply h-screen;
+}
+
+.container {
+  height: calc(100vh - 64px);
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+.main {
+  height: calc(100vh - 64px);
+}

@@ -1,0 +1,32 @@
+.container {
+  @apply flex items-center justify-center w-full;
+}
+
+.label {
+  @apply flex items-center cursor-pointer;
+}
+
+.pill {
+  @apply block bg-white w-14 h-8 rounded-full;
+}
+
+.dot {
+  @apply absolute left-1 top-1 bg-teal-300 w-6 h-6 rounded-full transition;
+}
+
+.msg {
+  @apply ml-1 text-gray-700 font-medium;
+}
+
+.input {
+  @apply sr-only;
+}
+
+.input:checked ~ .dot {
+  transform: translateX(100%);
+  @apply bg-gray-700;
+}
+
+.input:checked ~ .pill {
+  @apply bg-teal-500;
+}

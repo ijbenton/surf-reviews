@@ -1,0 +1,3 @@
+.list {
+  @apply flex flex-wrap justify-between py-4;
+}
