@@ -10,13 +10,13 @@ export default async function handler(
 ) {
   const {
     method,
-    query: { id },
+    query: { slug },
   } = req;
 
   switch (method) {
     case 'GET':
       try {
-        const surfboard = await Surfboard.findById(id);
+        const surfboard = await Surfboard.findOne({ slug });
 
         if (!surfboard) {
           res.status(400).json({ success: false });
@@ -29,7 +29,7 @@ export default async function handler(
       break;
     case 'PUT':
       try {
-        const surfboard = await Surfboard.findByIdAndUpdate(id, req.body, {
+        const surfboard = await Surfboard.findOneAndUpdate({ slug }, req.body, {
           new: true,
           runValidators: true,
         });
@@ -45,7 +45,7 @@ export default async function handler(
       break;
     case 'DELETE':
       try {
-        const deletedSurfboard = await Surfboard.deleteOne({ _id: id });
+        const deletedSurfboard = await Surfboard.deleteOne({ slug });
 
         if (!deletedSurfboard) {
           res.status(400).json({ success: false });

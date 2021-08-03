@@ -1,19 +1,19 @@
 import { GetStaticProps } from 'next';
 import SurfboardList from '../components/SurfboardList/SurfboardList';
+import { server } from '../config';
 
-const Home = ({ data }) => {
-  console.log(data);
+const Home = ({ surfboards }) => {
   return (
     <div>
-      <SurfboardList items={data} />
+      <SurfboardList items={surfboards} />
     </div>
   );
 };
 
-export async function getStaticProps() {
-  const res = await fetch('http://localhost:3000/api/surfboards');
+export const getStaticProps = async () => {
+  const res = await fetch(`${server}/api/surfboards`);
   const data = await res.json();
-  console.log(data);
+
   if (!data) {
     return {
       notFound: true,
@@ -21,8 +21,8 @@ export async function getStaticProps() {
   }
 
   return {
-    props: { data },
+    props: { surfboards: data.data },
   };
-}
+};
 
 export default Home;

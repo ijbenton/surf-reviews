@@ -7,7 +7,7 @@ const SurfboardList = ({ items }) => {
   return (
     <ul className={styles.list}>
       {items.map((item) => (
-        <SurfboardListItem key={item.id} item={item} />
+        <SurfboardListItem key={item._id} item={item} />
       ))}
     </ul>
   );

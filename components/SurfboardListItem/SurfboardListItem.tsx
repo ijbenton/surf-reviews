@@ -28,7 +28,7 @@ const SurfboardListItem = ({ item }: SurfboardProps) => {
   return (
     <div className={styles.item}>
       <div className={styles['item__container']}>
-        <Link href={`/surfboards/${item.slug}`} passHref={true}>
+        <Link href='/surfboards/[slug]' as={`/surfboards/${item.slug}`}>
           <a>
             <div className='relative h-44'>
               <Image
@@ -42,6 +42,7 @@ const SurfboardListItem = ({ item }: SurfboardProps) => {
               <h2>{item.model}</h2>
               <p>{item.brand}</p>
               <Rating
+                readonly
                 initialRating={itemAvgRating}
                 emptySymbol={<FullStar className='h-5 w-5 text-gray-400' />}
                 fullSymbol={<FullStar className='h-5 w-5 text-teal-500' />}

@@ -1,0 +1,81 @@
+.logo {
+  right: calc(50% - 2.625rem);
+  top: -2.625rem;
+}
+
+.providerLogo {
+  @apply rounded-l-md h-full py-2 px-3 flex flex-col justify-center;
+}
+
+.providerBtn {
+  @apply flex-1 rounded-md flex;
+}
+.providerBtn:first-child {
+  @apply mr-3;
+}
+
+.providerName {
+  @apply py-2 w-full text-center;
+}
+
+.email {
+  @apply bg-gray-300;
+}
+
+.email:hover {
+  background-color: rgb(196, 196, 199);
+}
+
+.facebook {
+  background-color: #4267b2;
+}
+.facebook:hover {
+  background-color: #355596;
+}
+.facebook:hover .facebookDark {
+  background-color: #1d2c4b;
+}
+.facebookDark {
+  background-color: #2b4270;
+}
+
+.twitter {
+  background-color: #1da1f2;
+}
+.twitter:hover {
+  background-color: #1989d0;
+}
+.twitter:hover .twitterDark {
+  background-color: #1675b1;
+}
+
+.twitterDark {
+  background-color: #1881c2;
+}
+
+.github {
+  @apply bg-gray-800;
+}
+.github:hover {
+  background-color: rgb(22, 22, 24);
+}
+.github:hover .githubDark {
+  @apply bg-black;
+}
+
+.githubDark {
+  background-color: rgb(18, 18, 19);
+}
+
+.google {
+  background-color: #db4437;
+}
+.google:hover {
+  background-color: #ba3c30;
+}
+.google:hover .googleDark {
+  background-color: #832c24;
+}
+.googleDark {
+  background-color: #9d362d;
+}
