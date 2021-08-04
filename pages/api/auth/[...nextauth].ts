@@ -1,7 +1,24 @@
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
+import User from '../../../models/User';
 
 const options = {
+  session: {
+    jwt: true,
+    maxAge: 30 * 24 * 60 * 60,
+  },
+  callbacks: {
+    jwt: async (token, user, account, profile, isNewUser) => {
+      return Promise.resolve(token);
+    },
+    session: async (session, token) => {
+      // Keep session up to date
+      const user = await User.findById(token.sub);
+      session.user = user;
+      session.user.id = token.sub;
+      return Promise.resolve(session);
+    },
+  },
   providers: [
     Providers.GitHub({
       clientId: process.env.GITHUB_ID,

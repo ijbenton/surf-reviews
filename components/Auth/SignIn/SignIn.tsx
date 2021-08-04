@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { getProviders, signIn, getCsrfToken } from 'next-auth/client';
 import { Dialog, Transition } from '@headlessui/react';
-import { XIcon, MailIcon } from '@heroicons/react/outline';
+import { XIcon } from '@heroicons/react/outline';
 import {
   FaFacebookSquare,
   FaGithub,
@@ -28,7 +28,6 @@ export default function SignInModal({ isOpen, setIsOpen }) {
     fetchProviders().then((res) => setProviders(res));
     fetchCsrfToken().then((res) => setCsrfToken(res));
   }, []);
-  console.log(providers);
   return (
     <>
       {providers && (

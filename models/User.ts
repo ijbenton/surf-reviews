@@ -13,10 +13,15 @@ const UserSchema = new mongoose.Schema({
       'Please add a valid email',
     ],
   },
+  image: String,
   role: {
     type: String,
     default: 'user',
   },
+  age: Number,
+  weight: Number,
+  height: String,
+  skill: String,
   emailVerified: {
     type: Date,
     default: Date.now,

@@ -21,7 +21,7 @@ const ReviewList = ({ reviews, model }: ReviewListProps) => {
           <div className='flex relative w-full border-b-2 border-gray-100 pb-4 mb-4'>
             <Image
               className='rounded-full'
-              src='/avatar.png'
+              src={review.image || '/avatar.png'}
               alt='profile picture'
               height={80}
               width={80}
@@ -33,7 +33,7 @@ const ReviewList = ({ reviews, model }: ReviewListProps) => {
                 {review.weight} lbs
               </p>
               <p className='mb-1'>Skill: {review.skill}</p>
-              <p>({getFormattedDate(review.date)})</p>
+              <p>({getFormattedDate(new Date(review.createdAt))})</p>
             </div>
           </div>
           <div className='flex justify-between h-44'>

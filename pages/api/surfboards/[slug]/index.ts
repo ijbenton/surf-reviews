@@ -16,15 +16,17 @@ export default async function handler(
   switch (method) {
     case 'GET':
       try {
-        const surfboard = await Surfboard.findOne({ slug });
+        const surfboard = await Surfboard.findOne({ slug }).populate('reviews');
 
         if (!surfboard) {
-          res.status(400).json({ success: false });
+          return res
+            .status(400)
+            .json({ success: false, message: 'No surfboard found' });
         }
 
         res.status(200).json({ success: true, data: surfboard });
       } catch (error) {
-        res.status(400).json({ success: false });
+        res.status(400).json({ success: false, message: error.message });
       }
       break;
     case 'PUT':
@@ -32,15 +34,17 @@ export default async function handler(
         const surfboard = await Surfboard.findOneAndUpdate({ slug }, req.body, {
           new: true,
           runValidators: true,
-        });
+        }).populate('reviews');
 
         if (!surfboard) {
-          res.status(400).json({ success: false });
+          return res
+            .status(400)
+            .json({ success: false, message: 'No surfboard found' });
         }
 
         res.status(200).json({ success: true, data: surfboard });
       } catch (error) {
-        res.status(400).json({ success: false });
+        res.status(400).json({ success: false, message: error.message });
       }
       break;
     case 'DELETE':
@@ -48,12 +52,14 @@ export default async function handler(
         const deletedSurfboard = await Surfboard.deleteOne({ slug });
 
         if (!deletedSurfboard) {
-          res.status(400).json({ success: false });
+          return res
+            .status(400)
+            .json({ success: false, message: 'No surfboard found' });
         }
 
         res.status(200).json({ success: true, data: {} });
       } catch (error) {
-        res.status(400).json({ success: false });
+        res.status(400).json({ success: false, message: error.message });
       }
       break;
     default:

@@ -3,6 +3,7 @@ import { Field, Form, Formik } from 'formik';
 import React from 'react';
 import Rating from 'react-rating';
 import { ReviewObj, reviewSkillLevels } from '../../../data/surfboards';
+import Spinner from '../../Spinner/Spinner';
 import styles from './ReviewForm.module.css';
 
 interface ReviewFormProps {
@@ -11,7 +12,7 @@ interface ReviewFormProps {
 
 const ReviewForm = ({ setIsModalOpen }: ReviewFormProps) => {
   const submitHandler = (values, { resetForm, setSubmitting }) => {
-    console.log(values);
+    // console.log(values);
 
     setTimeout(() => {
       resetForm();
@@ -227,7 +228,7 @@ const ReviewForm = ({ setIsModalOpen }: ReviewFormProps) => {
               Submit
             </button>
           </Form>
-          {isSubmitting ? <div className={styles.loader}></div> : null}
+          {isSubmitting ? <Spinner /> : null}
         </div>
       )}
     </Formik>

@@ -21,16 +21,53 @@ import CheckboxGroup from '../CheckboxGroup/CheckboxGroup';
 import DynamicInput from '../DynamicInput/DynamicInput';
 import FormSection from '../FormSection/FormSection';
 
+const arrayAttrMap = (definedArr, formArr) => {
+  let newArr = [];
+  for (let i = 0; i < definedArr.length; i++) {
+    if (formArr.indexOf(definedArr[i]) !== -1) {
+      newArr.push(definedArr[i]);
+    } else {
+      newArr.push(null);
+    }
+  }
+  return newArr;
+};
+
 const AddSurfboardForm = () => {
   const submitHandler = (values, { resetForm, setSubmitting }) => {
+    const newObj = {
+      ...values,
+      wave: {
+        size: arrayAttrMap(waveSize, values.wave.size),
+        break: arrayAttrMap(waveBreak, values.wave.break),
+        power: arrayAttrMap(wavePower, values.wave.power),
+      },
+      shape: {
+        entryRocker: arrayAttrMap(shapeEntryRocker, values.shape.entryRocker),
+        exitRocker: arrayAttrMap(shapeExitRocker, values.shape.exitRocker),
+        nose: arrayAttrMap(shapeNose, values.shape.nose),
+        rails: arrayAttrMap(shapeRails, values.shape.rails),
+        tailWidth: arrayAttrMap(shapeTailWidth, values.shape.tailWidth),
+      },
+      performance: {
+        approach: arrayAttrMap(
+          performanceApproach,
+          values.performance.approach
+        ),
+        skillLevel: arrayAttrMap(
+          performanceSkillLevel,
+          values.performance.skillLevel
+        ),
+      },
+    };
+    console.log(newObj);
     // CALL API HERE
 
-    resetForm();
+    // resetForm();
     setSubmitting(false);
   };
 
-  const initialValues: Surfboard = {
-    slug: 'hello',
+  const initialValues = {
     brand: 'Pyzel',
     category: 'Shortboard / Performance',
     shaperUrl: '',
@@ -40,22 +77,21 @@ const AddSurfboardForm = () => {
     images: [''],
     dimensions: [{ height: '', width: '', thickness: '', volume: 0 }],
     wave: {
-      size: [],
-      break: [],
-      power: [],
+      size: [null, null, null],
+      break: [null, null, null],
+      power: [null, null, null],
     },
     performance: {
-      approach: [],
-      skillLevel: [],
+      approach: [null, null, null],
+      skillLevel: [null, null, null],
     },
     shape: {
-      rails: [],
-      nose: [],
-      tailWidth: [],
-      entryRocker: [],
-      exitRocker: [],
+      rails: [null, null, null],
+      nose: [null, null, null],
+      tailWidth: [null, null, null],
+      entryRocker: [null, null, null],
+      exitRocker: [null, null, null],
     },
-    reviews: [],
   };
   return (
     <div>

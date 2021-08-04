@@ -1,0 +1,4 @@
+.img-edit-icon {
+  left: calc(50% + 25px);
+  @apply bg-teal-500 hover:bg-teal-600 cursor-pointer text-white rounded-full z-10 absolute bottom-3 p-2 shadow-md;
+}

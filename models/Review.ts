@@ -17,6 +17,12 @@ const ReviewSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  name: { type: String, require: [true, 'Please enter name'] },
+  age: { type: Number, require: [true, 'Please enter age'] },
+  weight: { type: Number, require: [true, 'Please enter weight'] },
+  height: { type: String, require: [true, 'Please enter height'] },
+  skill: { type: String, require: [true, 'Please enter skill'] },
+  image: String,
   surfboard: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Surfboard',

@@ -18,6 +18,7 @@ const navigation = [
 ];
 
 const Nav = (): JSX.Element => {
+  // console.log(session);
   const [session, loading] = useSession();
   const [isSignInOpen, setIsSignInOpen] = useState(false);
   return (
