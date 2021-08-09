@@ -1,7 +1,6 @@
 import React from 'react';
 import { Formik, Field, Form, FieldArray } from 'formik';
 import {
-  Surfboard,
   categories,
   brands,
   waveSize,
@@ -14,7 +13,7 @@ import {
   shapeTailWidth,
   performanceApproach,
   performanceSkillLevel,
-} from '../../../../../../types/surfboards';
+} from '../../../../../../constants/surfboard';
 import styles from './Form.module.css';
 import { PlusIcon, XCircleIcon } from '@heroicons/react/outline';
 import CheckboxGroup from '../CheckboxGroup/CheckboxGroup';

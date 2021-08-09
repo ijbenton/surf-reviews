@@ -1,11 +1,11 @@
 import { StarIcon } from '@heroicons/react/solid';
 import axios from 'axios';
 import { Field, Form, Formik } from 'formik';
-import { signIn, useSession } from 'next-auth/client';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import Rating from 'react-rating';
-import { ReviewObj, reviewSkillLevels } from '../../../../../types/surfboards';
+import { reviewSkillLevels } from '../../../../../constants/surfboard';
+import { Review } from '../../../../../types/surfboard';
 import Spinner from '../../../../components/Spinner/Spinner';
 import styles from './ReviewForm.module.css';
 
@@ -46,7 +46,7 @@ const ReviewForm = ({
         }, 5000);
       });
   };
-  const initialValues: ReviewObj = {
+  const initialValues: Review = {
     description: '',
     age: session?.user?.age || null,
     weight: session?.user?.weight || null,

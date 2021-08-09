@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { server } from '../../../src/lib/config';
 import SurfboardList from '../../../src/views/SurfboardList/components/List/List';
-import { categories } from '../../../types/surfboards';
+import { categories } from '../../../constants/surfboard';
 const SurfboardPage = ({ surfboards, category }) => {
   const title =
     category
