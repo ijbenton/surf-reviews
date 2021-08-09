@@ -21,19 +21,19 @@ export const brands = [
 ] as const;
 
 export const categories = [
-  'Shortboard / Performance',
-  'Small Wave / Performance',
-  'Retro / Classic',
-  'Step Up',
-  'Big Wave / Gun',
-  'Soft Top',
-  'Hybrid',
-  'Twin Fin',
-  'Single Fin',
-  'Longboard',
-  'Mid Length',
-  'Grom',
-  'Big Guy',
+  'shortboard-performance',
+  'small_wave-performance',
+  'retro-classic',
+  'step_up',
+  'big_wave-gun',
+  'soft_top',
+  'hybrid',
+  'twin_fin',
+  'single_fin',
+  'longboard',
+  'mid_length',
+  'grom',
+  'big_guy',
 ] as const;
 
 export const waveSize = ['knee', 'head', 'double+'] as const;

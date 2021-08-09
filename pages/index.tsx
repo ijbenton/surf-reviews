@@ -1,14 +1,11 @@
-import { GetStaticProps } from 'next';
-import SurfboardList from '../components/SurfboardList/SurfboardList';
-import { server } from '../config';
+import { server } from '../src/lib/config';
+import HomeView from '../src/views/Home/Home';
 
-const Home = ({ surfboards }) => {
-  return (
-    <div>
-      <SurfboardList items={surfboards} />
-    </div>
-  );
-};
+interface HomeProps {
+  items: [];
+}
+
+const Home = ({ items }: HomeProps) => <HomeView items={items} />;
 
 export const getStaticProps = async () => {
   const res = await fetch(`${server}/api/surfboards`);
@@ -21,7 +18,7 @@ export const getStaticProps = async () => {
   }
 
   return {
-    props: { surfboards: data.data },
+    props: { items: data.data },
   };
 };
 

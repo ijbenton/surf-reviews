@@ -1,14 +1,10 @@
 import React from 'react';
-import SurfboardList from '../../components/SurfboardList/SurfboardList';
-import { server } from '../../config';
+import { server } from '../../src/lib/config';
+import SurfboardListView from '../../src/views/SurfboardList/SurfboardList';
 
-const SurfboardListPage = ({ surfboards }) => {
-  return (
-    <div>
-      <SurfboardList items={surfboards} />
-    </div>
-  );
-};
+const AllSurfboardsPage = ({ items }) => (
+  <SurfboardListView items={items} title='All Surfboards' />
+);
 
 export const getStaticProps = async () => {
   const res = await fetch(`${server}/api/surfboards`);
@@ -21,8 +17,8 @@ export const getStaticProps = async () => {
   }
 
   return {
-    props: { surfboards: data.data },
+    props: { items: data.data },
   };
 };
 
-export default SurfboardListPage;
+export default AllSurfboardsPage;

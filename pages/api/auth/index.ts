@@ -1,7 +1,7 @@
 import { getSession } from 'next-auth/client';
-import dbConnect from '../../../utils/db';
+import dbConnect from '../../../server/lib/db';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import User from '../../../models/User';
+import User from '../../../server/models/User';
 
 dbConnect();
 

@@ -1,8 +1,8 @@
 import { surfboards } from './../../../data/surfboards';
-import dbConnect from '../../../utils/db';
+import dbConnect from '../../../server/lib/db';
 import type { NextApiRequest, NextApiResponse } from 'next';
-import Surfboard from '../../../models/Surfboard';
-import Review from '../../../models/Review';
+import Surfboard from '../../../server/models/Surfboard';
+import Review from '../../../server/models/Review';
 
 dbConnect();
 
@@ -15,8 +15,10 @@ export default async function handler(
   switch (method) {
     case 'GET':
       try {
-        console.log('surfboards');
-        const surfboards = await Surfboard.find({}).populate('reviews');
+        const surfboards = await Surfboard.find({}).populate({
+          path: 'reviews',
+          model: Review,
+        });
         res.status(200).json({ success: true, data: surfboards });
       } catch (error) {
         res.status(400).json({ success: false, message: error.message });
@@ -24,7 +26,10 @@ export default async function handler(
       break;
     case 'POST':
       try {
-        const surfboard = await Surfboard.create(req.body);
+        let surfboard = await Surfboard.create(req.body);
+        surfboard = await surfboard
+          .populate({ path: 'reviews', model: Review })
+          .execPopulate();
 
         res.status(201).json({ success: true, data: surfboard });
       } catch (error) {

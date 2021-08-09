@@ -1,0 +1,4 @@
+.list {
+  flex: 0 70%;
+  @apply flex flex-wrap justify-between py-4;
+}

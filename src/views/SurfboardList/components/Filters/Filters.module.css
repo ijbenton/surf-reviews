@@ -1,0 +1,12 @@
+.filters {
+  flex: 0 30%;
+  @apply pr-4 mt-4;
+}
+
+.filter {
+  @apply flex w-full justify-between items-center bg-white mb-2 px-4 py-4 rounded-lg shadow-sm;
+}
+
+.filter__title {
+  @apply text-lg font-medium inline-block;
+}

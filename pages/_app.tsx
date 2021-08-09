@@ -1,9 +1,8 @@
-import '../styles/globals.css';
+import '../global/globals.css';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from 'next-themes';
-import Layout from '../components/Layout/Layout';
+import Layout from '../src/components/Layout/Layout';
 import { Provider } from 'next-auth/client';
-import { useState } from 'react';
 
 const sessionOptions = {
   clientMaxAge: 2 * 60 * 60, // Re-fetch session if cache is older than 2 hours

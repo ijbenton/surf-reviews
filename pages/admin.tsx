@@ -1,12 +1,6 @@
 import React from 'react';
-import AddSurfboardForm from '../components/AddSurfboard/Form/Form';
+import AdminView from '../src/views/Admin/Admin';
 
-const admin = () => {
-  return (
-    <div>
-      <AddSurfboardForm />
-    </div>
-  );
-};
+const AdminPage = () => <AdminView />;
 
-export default admin;
+export default AdminPage;
