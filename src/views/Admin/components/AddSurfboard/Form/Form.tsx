@@ -14,7 +14,7 @@ import {
   shapeTailWidth,
   performanceApproach,
   performanceSkillLevel,
-} from '../../../../../../data/surfboards';
+} from '../../../../../../types/surfboards';
 import styles from './Form.module.css';
 import { PlusIcon, XCircleIcon } from '@heroicons/react/outline';
 import CheckboxGroup from '../CheckboxGroup/CheckboxGroup';

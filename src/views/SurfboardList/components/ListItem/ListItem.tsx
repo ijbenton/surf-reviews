@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import Rating from 'react-rating';
-import { Surfboard } from '../../../../../data/surfboards';
+import { Surfboard } from '../../../../../types/surfboards';
 import styles from './ListItem.module.css';
 import { StarIcon as FullStar } from '@heroicons/react/solid';
 import Link from 'next/link';

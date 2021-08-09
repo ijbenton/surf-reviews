@@ -10,7 +10,7 @@ import {
   waveBreak,
   wavePower,
   waveSize,
-} from '../../../../../data/surfboards';
+} from '../../../../../types/surfboards';
 import AttributeBar from './AttributeBar';
 
 const AttributeList = ({ item }) => {

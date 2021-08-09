@@ -1,4 +1,4 @@
-import { surfboards } from './../../../data/surfboards';
+import { surfboards } from '../../../types/surfboards';
 import dbConnect from '../../../server/lib/db';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import Surfboard from '../../../server/models/Surfboard';

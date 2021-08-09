@@ -5,7 +5,7 @@ import { signIn, useSession } from 'next-auth/client';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import Rating from 'react-rating';
-import { ReviewObj, reviewSkillLevels } from '../../../../../data/surfboards';
+import { ReviewObj, reviewSkillLevels } from '../../../../../types/surfboards';
 import Spinner from '../../../../components/Spinner/Spinner';
 import styles from './ReviewForm.module.css';
 

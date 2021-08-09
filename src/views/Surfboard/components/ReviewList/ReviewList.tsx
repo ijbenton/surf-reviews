@@ -4,7 +4,7 @@ import { StarIcon } from '@heroicons/react/solid';
 import styles from './ReviewList.module.css';
 import { getFormattedDate } from '../../../../lib/date';
 import Rating from 'react-rating';
-import { ReviewObj } from '../../../../../data/surfboards';
+import { ReviewObj } from '../../../../../types/surfboards';
 
 interface ReviewListProps {
   reviews: ReviewObj[];
