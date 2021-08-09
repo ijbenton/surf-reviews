@@ -11,9 +11,14 @@ import {
   wavePower,
   waveSize,
 } from '../../../../../constants/surfboard';
+import { Surfboard } from '../../../../../types/surfboard';
 import AttributeBar from './AttributeBar';
 
-const AttributeList = ({ item }) => {
+type AttributeListProps = {
+  item: Surfboard;
+};
+
+const AttributeList = ({ item }: AttributeListProps) => {
   return (
     <div>
       <h2 className='text-center text-xl font-semibold'>WAVE</h2>

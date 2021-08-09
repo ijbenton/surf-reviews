@@ -1,6 +1,11 @@
 import React from 'react';
+import { Dimension } from '../../../../../types/surfboard';
 
-const DimensionsTable = ({ dimensions }) => {
+type DimensionsTableProps = {
+  dimensions: Dimension[];
+};
+
+const DimensionsTable = ({ dimensions }: DimensionsTableProps) => {
   return (
     <table className='pt-3'>
       <thead>

@@ -40,14 +40,25 @@ export type Performance = {
 
 export type Review = {
   description: string;
-  name: string;
-  date: Date;
   age: number | null;
   weight: number | null;
   height: string;
   skill: typeof reviewSkillLevels[number];
   dimension: Dimension;
   rating: Rating;
+  user: User;
+  createdAt: string;
+};
+
+export type User = {
+  name: string;
+  email: string;
+  image: string;
+  createdAt: Date;
+  age?: string;
+  height?: string;
+  weight?: string;
+  skill?: string;
 };
 
 export type Rating = {

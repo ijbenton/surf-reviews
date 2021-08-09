@@ -1,35 +1,43 @@
 import { StarIcon } from '@heroicons/react/solid';
 import axios from 'axios';
-import { Field, Form, Formik } from 'formik';
+import { Field, Form, Formik, FormikHelpers } from 'formik';
 import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import Rating from 'react-rating';
+import { Rating as RatingType } from '../../../../../types/surfboard';
 import { reviewSkillLevels } from '../../../../../constants/surfboard';
-import { Review } from '../../../../../types/surfboard';
+import { Dimension, Review } from '../../../../../types/surfboard';
 import Spinner from '../../../../components/Spinner/Spinner';
 import styles from './ReviewForm.module.css';
 
-interface ReviewFormProps {
-  setIsModalOpen: (i: boolean) => void;
-  setReviews: any;
+type ReviewFormProps = {
+  setReviews: React.Dispatch<React.SetStateAction<Review[]>>;
   session: any;
-}
+};
 
-const ReviewForm = ({
-  setIsModalOpen,
-  setReviews,
-  session,
-}: ReviewFormProps) => {
+type Values = {
+  description: string;
+  age?: number;
+  weight?: number;
+  height?: string;
+  skill?: string;
+  dimension: Dimension;
+  rating: RatingType;
+};
+
+const ReviewForm = ({ setReviews, session }: ReviewFormProps) => {
   const {
     query: { slug },
   } = useRouter();
-  const [errorMsg, setErrorMsg] = useState(null);
-  const [successMsg, setSuccessMsg] = useState(null);
-  const submitHandler = (values, { resetForm, setSubmitting }) => {
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [successMsg, setSuccessMsg] = useState<string | null>(null);
+  const submitHandler = (
+    values: Values,
+    { resetForm, setSubmitting }: FormikHelpers<Values>
+  ) => {
     axios
       .post(`/api/surfboards/${slug}/reviews`, values)
       .then((res) => {
-        console.log(res.data.data);
         setReviews((prevState) => [...prevState, res.data.data]);
         setSuccessMsg('Review was posted!');
         resetForm();
@@ -46,7 +54,7 @@ const ReviewForm = ({
         }, 5000);
       });
   };
-  const initialValues: Review = {
+  const initialValues: Values = {
     description: '',
     age: session?.user?.age || null,
     weight: session?.user?.weight || null,

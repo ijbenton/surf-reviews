@@ -1,7 +1,13 @@
 import React from 'react';
 import styles from './Attribute.module.css';
 
-function AttributeBar({ data, attributes, title }) {
+type AttributeBarProps = {
+  data: any[];
+  attributes: readonly any[];
+  title: string;
+};
+
+function AttributeBar({ data, attributes, title }: AttributeBarProps) {
   return (
     <div className='text-center'>
       <h3 className='mt-2 uppercase text-sm'>{title}</h3>

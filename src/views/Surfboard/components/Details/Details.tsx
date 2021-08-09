@@ -8,25 +8,36 @@ import AttributeList from '../Attribute/AttributeList';
 import ImgCarousel from '../../../../components/ImgCarousel/ImgCarousel';
 import styles from './Details.module.css';
 import DimensionsTable from '../Dimensions/Dimensions';
+import { Review, Surfboard } from '../../../../../types/surfboard';
 
-const SurfboardDetails = ({ surfboard, reviews, setIsAddReviewOpen }) => {
+type SurfboardDetailsProps = {
+  item: Surfboard;
+  reviews: Review[];
+  setIsAddReviewOpen: (isAddReviewOpen: boolean) => void;
+};
+
+const SurfboardDetails = ({
+  item,
+  reviews,
+  setIsAddReviewOpen,
+}: SurfboardDetailsProps) => {
   const [showAttributes, setShowAttributes] = useState(true);
   const avgRating =
     reviews.length > 0
       ? reviews.reduce((a, b) => a + b.rating.overall, 0) / reviews.length
       : 0;
 
-  const cost = getUSD(surfboard.price);
+  const cost = getUSD(item.price);
   return (
     <div className='flex flex-col sm:flex-row w-full pt-4 pb-16 relative'>
       <div
         className={`w-full relative block sm:sticky sm:top-0 sm:w-1/2 ${styles.img}`}
       >
-        <ImgCarousel item={surfboard} />
+        <ImgCarousel images={item.images} />
       </div>
       <div className='p-5 w-full sm:w-1/2 flex flex-col bg-gray-100'>
-        <h2 className='text-xl font-bold mb-2'>{surfboard.brand}</h2>
-        <h4 className='text-lg font-normal mb-2'>{surfboard.model}</h4>
+        <h2 className='text-xl font-bold mb-2'>{item.brand}</h2>
+        <h4 className='text-lg font-normal mb-2'>{item.model}</h4>
         <div className='flex mb-2'>
           <Rating
             readonly
@@ -38,9 +49,7 @@ const SurfboardDetails = ({ surfboard, reviews, setIsAddReviewOpen }) => {
         </div>
         <div className='flex mb-4'>
           <ScrollLink to='reviews' smooth className={styles['review-btn']}>
-            <span className='mr-1 text-teal-500 '>
-              ({surfboard.reviews.length})
-            </span>
+            <span className='mr-1 text-teal-500 '>({item.reviews.length})</span>
             <span>Reviews</span>
           </ScrollLink>
           {/* On click toggle review modal */}
@@ -53,7 +62,7 @@ const SurfboardDetails = ({ surfboard, reviews, setIsAddReviewOpen }) => {
           </div>
         </div>
 
-        <p className='mb-4 text-sm'>{surfboard.description}</p>
+        <p className='mb-4 text-sm'>{item.description}</p>
         <ul className='flex border-b border-gray-200 mb-4'>
           <li
             onClick={() => setShowAttributes(true)}
@@ -78,9 +87,9 @@ const SurfboardDetails = ({ surfboard, reviews, setIsAddReviewOpen }) => {
         </ul>
 
         {showAttributes ? (
-          <AttributeList item={surfboard} />
+          <AttributeList item={item} />
         ) : (
-          <DimensionsTable dimensions={surfboard.dimensions} />
+          <DimensionsTable dimensions={item.dimensions} />
         )}
       </div>
     </div>

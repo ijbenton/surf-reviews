@@ -1,12 +1,13 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { XIcon } from '@heroicons/react/outline';
 import React, { Fragment } from 'react';
+import { Review } from '../../../../../types/surfboard';
 import ReviewForm from '../ReviewForm/ReviewForm';
 
 interface ReviewModalProps {
   isOpen: boolean;
-  setIsOpen: (i: boolean) => void;
-  setReviews: any;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setReviews: React.Dispatch<React.SetStateAction<Review[]>>;
   session: any;
 }
 
@@ -66,11 +67,7 @@ const ReviewModal = ({
                 </button>
               </div>
 
-              <ReviewForm
-                setIsModalOpen={setIsOpen}
-                setReviews={setReviews}
-                session={session}
-              />
+              <ReviewForm setReviews={setReviews} session={session} />
             </div>
           </Transition.Child>
         </div>

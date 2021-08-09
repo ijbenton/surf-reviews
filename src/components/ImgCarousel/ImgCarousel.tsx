@@ -11,17 +11,21 @@ import Image from 'next/image';
 // install Swiper modules
 SwiperCore.use([Navigation]);
 
-const ImgCarousel = ({ item }) => {
+type ImgCarouselProps = {
+  images: string[];
+};
+
+const ImgCarousel = ({ images }: ImgCarouselProps) => {
   return (
     <Swiper loop navigation={true} className={styles.swiper}>
       <>
-        {item.images.map((img, idx) => (
-          <SwiperSlide key={item.images[idx]}>
+        {images.map((img: string) => (
+          <SwiperSlide key={img}>
             <Image
-              src={item.images[idx]}
+              src={img}
               className='object-contain'
               layout='fill'
-              alt={item.model}
+              alt='surfboard'
             />
           </SwiperSlide>
         ))}
